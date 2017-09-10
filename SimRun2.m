@@ -1,7 +1,7 @@
 %SimRun2
 SimCnt=101;
            %( x, y, th,   dlt,        v,   a, j, L, W, WB );
-car=CarInit ( -5, -5,  0.2,   0.0, 30/3.6, 0.0, 0, 4.5, 1.9, 4.0 );
+car=CarInit ( 5, -5,  0.0,   0.0, 30/3.6, 0.0, 0, 4.5, 1.9, 4.0 );
 
 ary=zeros(SimCnt,3);
 
@@ -15,7 +15,7 @@ figure(1);
 clf(1);
 hold on;
 axis equal;
-[s,e,crop_path]=GetAhead(road,[car.x,car.y],20+40*0+30*0);
+[s,e,crop_path]=GetAhead(road,[car.x,car.y],20+40*1+30*1);
 
 plot(road(:,1),road(:,2),'.-',...
     car.x,car.y,'*',...

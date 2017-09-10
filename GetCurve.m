@@ -10,7 +10,7 @@ function [Curve]=GetCurve(Start,Stop)
     
     %Curve0=[0,0;Dlt(1),Dlt(2)];    
     Curve0=GetCurveCore(0,Dlt(2),0,Dlt(3),norm(Dlt));
-    
+        
     th0=Start(3);
     sth0=sin(th0);
     cth0=cos(th0);

@@ -15,10 +15,10 @@ P=zeros(Leng,4);
 
 k0=0;
 ke=0;
-the=pi/4;
+the=0;
 
 for j=1:(Range*2+1)
-    ye = (j-1-Range)*1.2126;        
+    ye = (j-1-Range);%*1.2126;        
     d = 1.2126 * ye;
     Ca=  k0;
     Cd=   d;
