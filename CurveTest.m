@@ -1,41 +1,34 @@
 %curvetest
-L=100;
-
-Leng=51;
-s=L*[0:(Leng-1)]'/(Leng-1);
-ds=L/(Leng-1);
-iS = [             s,     (s.^2)/2,   (s.^3)/3,   (s.^4)/4];
-S  = [ ones(Leng,1) ,     (s   )  ,   (s.^2)  ,   (s.^3)  ];
-dS = [ zeros(Leng,1), ones(Leng,1), 2*(s   )  , 3*(s.^2)  ];
-
-
+for i=1:3;
+    figure(i);
+    clf(i);
+end
 x=0;
 y=0;
 P=zeros(Leng,4);
+L=100;
 
-k0=0;
-ke=0;
-the=0;
-
-for j=1:(Range*2+1)
-    ye = (j-1-Range);%*1.2126;        
-    d = 1.2126 * ye;
-    Ca=  k0;
-    Cd=   d;
-    Cb=  -0.5*(-12*the+4*ke+8*Ca-1*Cd);
-    Cc=  -0.5*(+12*the-6*ke-6*Ca+3*Cd);
-    cc=[Ca/L;Cb/L^2;Cc/L^3;Cd/L^4];
-    k  =  S * cc;
-    th = iS * cc ;
-    x=0;y=0;
-    for i=1:Leng
-        P(i,:)=[x,y,k(i),th(i)];
-        x = x + cos(th(i)) * ds;
-        y = y + sin(th(i)) * ds;
+k0=0.01;
+ke=0.01;
+the=0.00;
+Range=10;
+for L=200:50:200
+    for j=1:(Range*2+1)
+        ye = 2*(j-1-Range);%*1.2126;        
+        [Curve,Coef,s,k,th]=GetCurveCore(k0,ye,ke,the,L);
+        figure(1);
+        plot(Curve(:,1),Curve(:,2),'.-c');   
+        hold on;
+        axis equal;    
+        
+        figure(2);
+        plot(s,k,'.-c');   
+        hold on;
+        
+        
+        figure(3);
+        plot(s,th,'.-c');   
+        hold on;
+        
     end
-    Curve=GetCurveCore(k0,ye,ke,the,L);
-    figure(1);
-    plot(Curve(:,1),Curve(:,2),'.-c');   
-    hold on;
-    axis equal;    
 end
