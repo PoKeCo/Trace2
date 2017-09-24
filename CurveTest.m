@@ -5,16 +5,16 @@ for i=1:3;
 end
 x=0;
 y=0;
-P=zeros(Leng,4);
+%P=zeros(Leng,5);
 L=100;
 
-k0=0.01;
-ke=0.01;
+k0=0.00;
+ke=0.00;
 the=0.00;
 Range=10;
-for L=200:50:200
+for L=1:1
     for j=1:(Range*2+1)
-        ye = 2*(j-1-Range);%*1.2126;        
+        ye = 0.01*(j-1-Range);%*1.2126;        
         [Curve,Coef,s,k,th]=GetCurveCore(k0,ye,ke,the,L);
         figure(1);
         plot(Curve(:,1),Curve(:,2),'.-c');   
