@@ -1,7 +1,8 @@
 %
 figure(1);
 clf(1);
-R=10;
+R1=10;
+R2=20;
 th1=30;
 th2=30+180;
 %for th2=90:30:270
@@ -9,8 +10,8 @@ th2=30+180;
         rad1= pi/180 * th1;
         rad2= pi/180 * th2;
         B=[ 0,0;
-              R*cos(rad1),R*sin(rad1);
-           30+R*cos(rad2),R*sin(rad2);
+              R1*cos(rad1),R1*sin(rad1);
+           30+R2*cos(rad2),R2*sin(rad2);
            30,0];
 
         t=[0:100]'/100.0;

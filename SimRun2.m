@@ -25,9 +25,8 @@ axis equal;
 for L=10:1:Lsum
     [s,e,crop_path]=GetAhead(road,[car.x,car.y],L);
     figure(1);
-
-
     Curve=GetCurve([car.x,car.y,car.th],e,road);
+    op=OfsPath( Curve(:,1:2), 100*Curve(:,3) ); 
     figure(1);
     plot(road(:,1),road(:,2),'.-',...
         car.x,car.y,'*',...
@@ -35,7 +34,9 @@ for L=10:1:Lsum
         e(1),e(2),'og',...
         crop_path(:,1),crop_path(:,2),'.-g'  );%,...
     hold on;
+    
     plot(Curve(  :,1),Curve(  :,2),'.-m',...
+         op( :,1),op(:,2),'.-c',...
          Curve(end,1),Curve(end,2),'or');
     hold off;
     axis equal;

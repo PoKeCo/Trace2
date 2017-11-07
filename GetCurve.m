@@ -39,9 +39,11 @@ function [Curve,Coef,s,k,th]=GetCurve(Start,Stop,Road)
     sth0=sin(th0);
     cth0=cos(th0);
     
-    Curve=Curve0*[ cth0, sth0;
-                  -sth0, cth0];
+    Curve = zeros( size( Curve0 ) );
+    Curve(:,1:2)=Curve0(:,1:2)*[ cth0, sth0;
+                                -sth0, cth0];
     Curve(:,1)=Curve(:,1)+Start(1);
     Curve(:,2)=Curve(:,2)+Start(2);    
+    Curve(:,3)=Curve0(:,3);
     
 end
