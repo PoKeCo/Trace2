@@ -10,7 +10,7 @@ function [Curve,Coef,s,k,th]=GetCurveCore(k0,ye,ke,the,L);
 
     x=0;
     y=0;
-    Curve=zeros(Leng,3);
+    Curve=zeros(Leng,4);
     
     yed=ye/L;
     thed=the;
@@ -27,7 +27,7 @@ function [Curve,Coef,s,k,th]=GetCurveCore(k0,ye,ke,the,L);
     th = iS * Coef ;
     x=0;y=0;
     for i=1:Leng
-        Curve(i,:)=[x,y,k(i)];%,k(i),th(i)];
+        Curve(i,:)=[x,y,th(i),k(i)];%,k(i),th(i)];
         x = x + cos(th(i)) * ds;
         y = y + sin(th(i)) * ds;
     end    

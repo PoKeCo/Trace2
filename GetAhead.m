@@ -1,6 +1,6 @@
 function [Start,Stop,CropPath]=GetAhead(Road,Position,Length)
     
-    Stop =Road(end,:);
+    Stop =Road(end,1:2);
     CropPath=Road;        
     [Start,d,istart]=GetNearest(Road,Position);
     s=0;
@@ -12,24 +12,24 @@ function [Start,Stop,CropPath]=GetAhead(Road,Position,Length)
     k=1;
     Step=0;    
     while(1)
-        CropPath(k,:)=c;
+        CropPath(k,1:2)=c;
         ni=i+1;
         k=k+1;
         if( ni>iend)
-            Stop=Road(end,:);
-            CropPath(k,:)=Stop;
+            Stop=Road(end,1:2);
+            CropPath(k,1:2)=Stop;
             break;
         end
-        n=Road(ni,:);
+        n=Road(ni,1:2);
         NormCmN=norm(c-n);
         NextStep=Step+NormCmN;        
         if( Step <= Length && Length < NextStep )
             Stop = c+(n-c)/NormCmN*(Length-Step);            
-            CropPath(k,:)=Stop;
+            CropPath(k,1:2)=Stop;
             break;
         end
         Step = NextStep;
-        c=Road(ni,:);
+        c=Road(ni,1:2);
         i=ni;
     end   
     

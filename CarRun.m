@@ -1,11 +1,9 @@
 function n = CarRun(c)
     
-    
-    
-    
+    %n.dlt = c.dlt;
     
     n.ddlt = c.ddlt;
-    n.dlt  = c.dlt + c.ddlt * c.dt;;
+    n.dlt  = c.dlt + c.ddlt * c.dt;    
     
     n.j    =  c.j ;
     n.a    =  c.a + n.j * c.dt;
@@ -15,6 +13,10 @@ function n = CarRun(c)
     n.th   =  c.th + n.v * n.dlt * c.dt / c.WB;
     n.x    = c.x + n.v * cos(n.th) * c.dt;
     n.y    = c.y + n.v * sin(n.th) * c.dt;
+    
+    %n.ddlt = c.ddlt;
+    %n.dlt  = c.dlt + c.ddlt * c.dt;    
+    
     
     n.dt   = c.dt;
     n.L    =  c.L;

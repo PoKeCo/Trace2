@@ -1,11 +1,11 @@
 %PathExample
            %( x, y, th, dlt,      v, a, j, L,   W, WB )
 car0=CarInit( 0, 0,  0,   0, 30/3.6, 0, 0, 5, 1.9,  4 );
-
+car0.dlt=0.1;
 pos=zeros(100,3);
 for t=1:100
     
-    if( mod(t, 10)== 0 )
+    if( mod(t, 10)== 1 )
         car0.ddlt=0.08*randn();
     end
     

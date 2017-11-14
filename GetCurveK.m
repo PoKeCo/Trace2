@@ -1,6 +1,8 @@
 %GetCurveParam
-function [Curve,Coef,s,k,th]=GetCurve(Start,Stop,Road)
-    th0=-Start(3);    
+function [Curve,Coef,s,k,th]=GetCurveK(Start,Stop,Road)
+    k0 = Start(4);
+    ke = Stop (4);
+    th0=-Start(3);
     sth0=sin(th0);
     cth0=cos(th0);
     Dlt=(Stop(1:2)-Start(1:2))*[ cth0, sth0;
@@ -13,7 +15,7 @@ function [Curve,Coef,s,k,th]=GetCurve(Start,Stop,Road)
     
     ye=0;
     for i=1:4
-        [Curve00,Coef,s,k,th]=GetCurveCore(0.0,ye,0,Dlt(3),norm(Dlt(1:2)));
+        [Curve00,Coef,s,k,th]=GetCurveCore(k0,ye,ke,Dlt(3),norm(Dlt(1:2)));
         [p,d,id]=GetNearest(LocRoad,Curve00(end,1:2));
 
         the=-Start(3);
@@ -27,7 +29,7 @@ function [Curve,Coef,s,k,th]=GetCurve(Start,Stop,Road)
         %ye=p(2);
         %ye
         %plot( [Curve00(end,1),Stop(1)], [Curve00(end,2),Stop(2)], 'o-c' );
-        [Curve0,Coef,s,k,th]=GetCurveCore(0.0,ye,0.0,Dlt(3),norm(Dlt(1:2)));       
+        [Curve0,Coef,s,k,th]=GetCurveCore(k0,ye,ke,Dlt(3),norm(Dlt(1:2)));       
     end
     %figure(5); 
     %plot( Curve0(:,1), Curve0(:,2), 'o-c',...
