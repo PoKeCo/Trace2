@@ -1,13 +1,14 @@
-function [pos,car_init]=PathExample()
+function [pos,car_init]=PathExample(cnt)
 %randn('seed',1);
+    
     car_init=CarInit( 0, 0,  0,   0, 30/3.6, 0, 0, 5, 1.9,  4 );
     car0=car_init;
-    pos=zeros(100,4);
-    for t=1:100
+    pos=zeros(cnt,4);
+    for t=1:cnt
 
         if( mod(t, 10)== 0 )
             car0.ddlt= 0.08*randn();
-            car0.dlt =+0.08*randn();
+            car0.dlt = 0.08*randn();
         end
 
         pos(t,1)=car0.x;

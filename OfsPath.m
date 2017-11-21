@@ -5,7 +5,7 @@ function op=OfsPath( p, o )
     
     op=p;
     
-    i=1
+    i=1;
     pn =p(i+1,:)-p(i,:);
     th =  atan2(pn(2),pn(1))+pi/2 ;
     r  = o(i);

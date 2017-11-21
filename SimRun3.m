@@ -1,7 +1,7 @@
 %SimRun2
 
 
-SimCnt=101;
+SimCnt=201;
            %( x, y, th,   dlt,        v,   a, j, L, W, WB );
 car=CarInit ( -10, -10,  0.0,   0.0, 30/3.6, 0.0, 0, 4.5, 1.9, 4.0 );
 
@@ -19,7 +19,7 @@ for k=2:KLEN
     Lsum=Lsum+norm(road(k,:)-road(k-1,:));
 end
 
-road=GetPathExample();
+road=GetPathExample(300);
 
 prdcar=CarRun(car);
 figure(1);
@@ -27,9 +27,10 @@ clf(1);
 hold off;
 axis equal;
 %for L=10:1:Lsum
-hist_cnt=350;
+hist_cnt=400;
 hist=zeros(hist_cnt,4);
-L=10;
+v=20/3.6;
+L=5*v;
 for i=1:hist_cnt
     [s,e,crop_path]=GetAhead(road,[car.x,car.y],L);
     e=[e,0];
@@ -38,10 +39,17 @@ for i=1:hist_cnt
     hist(i,:)=Curve(1,:);
     car.x  =Curve(2,1);
     car.y  =Curve(2,2);
-    car.th =Curve(2,3);
-    %car.dlt=max(-pi/6,min(pi/6,pi/Curve(2,4)*car.WB));
+    car.a  =0;
+    car.v  =v;
+    %car.th =Curve(2,3);
+    %Curve(2,4)*car.WB
+    car.dlt=max(-pi/6,min(pi/6,Curve(2,4)*car.WB));
+    %car.dlt=Curve(2,4)*car.WB
+    %car.dlt=0;
+    %car.ddlt=0;
+    
 
-    op=OfsPath( Curve(:,1:2), 10*Curve(:,4) ); 
+    op=OfsPath( Curve(:,1:2), Curve(:,4) ); 
     figure(1);
     plot(road(:,1),road(:,2),'.-',...
         car.x,car.y,'*',...
@@ -55,7 +63,9 @@ for i=1:hist_cnt
          Curve(end,1),Curve(end,2),'or');
     hold off;
     axis equal;
-    car=CarRun(car);
+    
+    car=CarRun(car);   
+    
     pause(0.05);
 %end
 end
