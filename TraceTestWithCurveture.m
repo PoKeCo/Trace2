@@ -1,5 +1,5 @@
 %TraceTestWithCurveture
-[RefPath,car0]=GetPathExample();
+[RefPath,car0]=GetPathExample(100);
 pel=size(RefPath,1);
 RefPath(:,1:2)=RefPath(:,1:2)+0.0*randn(pel,2);
 
