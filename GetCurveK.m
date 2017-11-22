@@ -14,7 +14,7 @@ function [Curve,Coef,s,k,th]=GetCurveK(Start,Stop,Road)
     Dlt=[Dlt, Stop(3)-Start(3)];
     
     ye=0;
-    for i=1:1
+    for i=1:4
         [Curve00,Coef,s,k,th]=GetCurveCore(k0,ye,ke,Dlt(3),norm(Dlt(1:2)));
         [p,d,id]=GetNearest(LocRoad,Curve00(end,1:2));
 

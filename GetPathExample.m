@@ -6,9 +6,21 @@ function [pos,car_init]=PathExample(cnt)
     pos=zeros(cnt,4);
     for t=1:cnt
 
-        if( mod(t, 10)== 0 )
-            car0.ddlt= 0.08*randn();
-            car0.dlt = 0.08*randn();
+        if( mod(t, 20)== 0 )
+            if(  mod(t, 200 )==0 )                
+                car0.ddlt= 0.4;
+                car0.dlt = 0;
+            elseif(  mod(t, 200 )==10 )
+                car0.ddlt= -0.4;
+            elseif(  mod(t, 200 )==100 )                
+                car0.ddlt= -0.4;
+                car0.dlt = 0;
+            elseif(  mod(t, 200 )==110 )
+                car0.ddlt= 0.4;
+            else
+                car0.ddlt= 0.08*randn();
+                car0.dlt = 0.08*randn();
+            end
         end
 
         pos(t,1)=car0.x;
