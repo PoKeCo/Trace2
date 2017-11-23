@@ -3,7 +3,7 @@
 
 SimCnt=201;
            %( x, y, th,   dlt,        v,   a, j, L, W, WB );
-car=CarInit ( -10, -50,  0.0,   0.0, 30/3.6, 0.0, 0, 4.5, 1.9, 4.0 );
+car=CarInit ( 0, -10,  0.0,   0.0, 30/3.6, 0.0, 0, 4.5, 1.9, 4.0 );
 
 ary=zeros(SimCnt,3);
 
@@ -19,7 +19,8 @@ for k=2:KLEN
     Lsum=Lsum+norm(road(k,:)-road(k-1,:));
 end
 
-road=GetPathExample(500);
+%road=GetPathExample(500);
+road=GetPathExampleCorner(500,20,75);
 
 prdcar=CarRun(car);
 figure(1);
@@ -29,7 +30,7 @@ axis equal;
 %for L=10:1:Lsum
 hist_cnt=450;
 hist=zeros(hist_cnt,4);
-v=60/3.6;
+v=30/3.6;
 L=5*v;
 for i=1:hist_cnt
     [s,e,crop_path]=GetAhead(road,[car.x,car.y],L);
