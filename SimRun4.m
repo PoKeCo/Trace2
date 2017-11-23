@@ -20,7 +20,7 @@ for k=2:KLEN
 end
 
 %road=GetPathExample(500);
-road=GetPathExampleCorner(500,20,75);
+road=GetPathExampleCorner(500,20,75,1);
 
 prdcar=CarRun(car);
 figure(1);
@@ -49,9 +49,16 @@ for i=1:hist_cnt
     %car.y=crop_path(2,2);
     
     err=-( crop_path(2,1)-car.x )*sin(car.th) ...
-        +( crop_path(2,2)-car.y )*cos(car.th)  
+        +( crop_path(2,2)-car.y )*cos(car.th)  ;
     
     ref_th=atan2( crop_path(2,2)-crop_path(1,2), crop_path(2,1)-crop_path(1,1));
+    dlt_th=ref_th-car.th;
+    dlt_th*180/pi
+    if(dlt_th>pi)
+        dlt_th=dlt_th-2*pi;
+    elseif(dlt_th<-pi)
+        dlt_th=dlt_th+2*pi;
+    end
     car.dlt=max(-pi/6,min(pi/6,(ref_th-car.th)/car.v/car.dt + 0.4*err));%(crop_path(2,2)-car.y)*0.1;
     %car.dlt=Curve(2,4)*car.WB
     %car.dlt=0;
