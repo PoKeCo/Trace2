@@ -19,7 +19,7 @@ function Curveture=GetCurveture(RefPath,car0)
         [k,r,u,v]=GetCurvetureCore(P);
         Curveture(i,4) = k;
     end
-    Curveture(:,4)=filter(ones(7,1)/7,[1],Curveture(:,4));
+    Curveture(:,4)=filter(ones(10,1)/10,[1],Curveture(:,4));
     for i = 2:(size(RefPath,1)-1)
         k = Curveture(i,4);
         th=th+car0.v*k*car0.dt;

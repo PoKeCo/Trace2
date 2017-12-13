@@ -36,7 +36,7 @@ figure(1);
 %plot(a,y,'.',a,yy,'o',a,yt,'*',a,yyyt,'x');
 plot(a,y,'.',a,yt,'*',a,yyyt,'x',a,yC,'.-r',a,yCt,'o-b');
 %    x, y, th, dlt, v, a, j, L, W, WB
-car=CarInit(0,0,0,0,30/3.6,0,0,5,1.9,4);
+car=CarInitAccord(0,0,0,0,30/3.6,0,0,5);
 car_hist=zeros(100,4);
 for i=1:100
     car.dlt=pi/10*sin(i/100*2*pi);

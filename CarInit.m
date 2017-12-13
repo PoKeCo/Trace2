@@ -1,4 +1,4 @@
-function car=CarInit( x, y, th, dlt, v, a, j, L, W, WB )
+function car=CarInit( x, y, th, dlt, v, a, j, L, W, WB, Rmin )
     car.dt  = 0.1;
     car.x   = x;
     car.y   = y;
@@ -12,4 +12,6 @@ function car=CarInit( x, y, th, dlt, v, a, j, L, W, WB )
     car.L   =  L;
     car.W   =  W;
     car.WB  =  WB;
+    car.Rmin = Rmin;
+    car.dltLim = WB/Rmin;    
 end

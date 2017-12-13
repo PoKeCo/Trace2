@@ -1,7 +1,7 @@
 function [pos,car_init]=PathExampleCorner(cnt,Rsmp,Prd,Tr)
 %randn('seed',1);
     
-    car_init=CarInit( 0, 0,  0,   0, 30/3.6, 0, 0, 5, 1.9,  4 );
+    car_init=CarInitAccord( 0, 0,  0, 0, 30/3.6, 0, 0 );
     car0=car_init;
     pos=zeros(cnt,4);
     alt=-1;

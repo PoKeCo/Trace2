@@ -5,10 +5,12 @@ function n = CarRun(c)
     n.ddlt = c.ddlt;
     n.dlt  = c.dlt + c.ddlt * c.dt;    
     
+    n.dlt = max( -c.dltLim, min(+c.dltLim, n.dlt));
+    
     n.j    =  c.j ;
     n.a    =  c.a + n.j * c.dt;
     n.v    =  c.v + n.a * c.dt;
-    n.s    =  c.s + n.v * c.dt;
+    n.s    =  c.s + n.v * c.dt;    
     
     n.th   =  c.th + n.v * n.dlt * c.dt / c.WB;
     
@@ -25,8 +27,9 @@ function n = CarRun(c)
     %n.dlt  = c.dlt + c.ddlt * c.dt;    
     
     
-    n.dt   = c.dt;
-    n.L    =  c.L;
-    n.W    =  c.W;
-    n.WB   =  c.WB;
+    n.dt      = c.dt;
+    n.L       =  c.L;
+    n.W       =  c.W;
+    n.WB      =  c.WB;
+    n.dltLim  =  c.dltLim;
 end

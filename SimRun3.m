@@ -3,7 +3,8 @@
 
 SimCnt=201;
            %( x, y, th,   dlt,        v,   a, j, L, W, WB );
-car=CarInit ( -10, -10,  0.0,   0.0, 30/3.6, 0.0, 0, 4.5, 1.9, 4.0 );
+%car=CarInit ( -10, -10,  0.0,   0.0, 30/3.6, 0.0, 0, 4.5, 1.9, 4.0 );
+car=CarInitAccord( -10, -10,  0.0,   0.0, 30/3.6, 0.0, 0);
 
 ary=zeros(SimCnt,3);
 

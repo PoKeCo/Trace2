@@ -1,6 +1,7 @@
 %PathExample
            %( x, y, th, dlt,      v, a, j, L,   W, WB )
-car0=CarInit( 0, 0,  0,   0, 30/3.6, 0, 0, 5, 1.9,  4 );
+%car0=CarInit( 0, 0,  0,   0, 30/3.6, 0, 0, 5, 1.9,  4 );
+car0=CarInitAccord( 0, 0,  0,   0, 30/3.6, 0, 0 );
 car0.dlt=0.1;
 pos=zeros(100,3);
 for t=1:100
