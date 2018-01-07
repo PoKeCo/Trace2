@@ -38,7 +38,7 @@ hold off;
 axis equal;
 %for L=10:1:Lsum
 hist_cnt=450;
-hist=zeros(hist_cnt,15);
+hist=zeros(hist_cnt,16);
 v=60/3.6;
 L=5*v;
 L=20;
@@ -66,7 +66,7 @@ for i=1:hist_cnt
     %car.v  = min( [VPat(1,1), car.v + dT*a , 60/3,6] );
     %vdst= min( [VPat(10,1), car.v + dT*a , 30/3.6] );
     vdst= min( [VPat(10,1), 30/3.6] );
-    car.a = max(-0.5*9.8, min(+1.0*9.8,car.a * 1.0 + 0.5*(vdst-car.v)));
+    car.a = max(-0.2*9.8, min(+0.2*9.8,car.a * 0.0 + 0.5*(vdst-car.v)/dT));
     %car.v = vdst;
     
     
@@ -137,9 +137,9 @@ for i=1:hist_cnt
     plot(1:i,hist(1:i,15)*180/pi,'g.-'   );       
     
         
-    %figure(6);
-    %hist(i,11)=vlim;
-    %plot(1:i,hist(1:i,11),'g.-'   );    
+    figure(9);
+    hist(i,16)=car.a;
+    plot(1:i,hist(1:i,16),'b.-'   );    
     
     car=CarRun(car);   
     

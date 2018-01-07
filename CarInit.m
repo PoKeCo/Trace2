@@ -1,4 +1,4 @@
-function car=CarInit( x, y, th, dlt, v, a, j, L, W, WB, Rmin )
+function car=CarInit( x, y, th, dlt, v, a, j, L, W, WB, TR, Rmin, SteerMax )
     car.dt  = 0.1;
     car.x   = x;
     car.y   = y;
@@ -12,6 +12,12 @@ function car=CarInit( x, y, th, dlt, v, a, j, L, W, WB, Rmin )
     car.L   =  L;
     car.W   =  W;
     car.WB  =  WB;
+    car.TR  =  TR;
     car.Rmin = Rmin;
-    car.dltLim = WB/Rmin;    
+    car.dltLim2 = WB/Rmin;
+    %Rc = sqrt( WB^2 + (( sqrt( Rmin^2 - L^2 ) - (TR/2))^2));    
+    Rc = sqrt((sqrt(Rmin^2 - WB^2)-TR/2)^2  + WB^2 );
+    car.Rc = Rc;
+    car.dltLim = asin( WB / Rc );
+    car.StLim  = SteerMax;
 end
