@@ -12,7 +12,7 @@ function n = CarRun(c)
     n.v    =  c.v + n.a * c.dt;
     n.s    =  c.s + n.v * c.dt;    
     
-    n.th   =  c.th + n.v * n.dlt * c.dt / c.WB;
+    n.th   =  c.th + n.v * sin(n.dlt) * c.dt / c.WB;
     
     if(n.th>pi)
         n.th=n.th-2*pi;
@@ -32,4 +32,5 @@ function n = CarRun(c)
     n.W       =  c.W;
     n.WB      =  c.WB;
     n.dltLim  =  c.dltLim;
+    n.StLim   =  c.StLim;
 end

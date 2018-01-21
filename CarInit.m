@@ -17,7 +17,7 @@ function car=CarInit( x, y, th, dlt, v, a, j, L, W, WB, TR, Rmin, SteerMax )
     car.dltLim2 = WB/Rmin;
     %Rc = sqrt( WB^2 + (( sqrt( Rmin^2 - L^2 ) - (TR/2))^2));    
     Rc = sqrt((sqrt(Rmin^2 - WB^2)-TR/2)^2  + WB^2 );
-    car.Rc = Rc;
+    car.Rc = Rc;    
     car.dltLim = asin( WB / Rc );
-    car.StLim  = SteerMax;
+    car.StLim = SteerMax;
 end
