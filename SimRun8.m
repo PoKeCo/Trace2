@@ -6,7 +6,7 @@ car=CarInitAccord ( -0, -4,  -00*pi/180,   0.0, 32/3.6, 0.0, 0);
 road=GetPathExampleCorner(300,12,75,0);
 %CrvEst=GetCurveture(road,car4c);
 
-vdst=60/3.6;
+vdst=30/3.6;
 
 for f=1:2
     figure(f);
@@ -16,12 +16,12 @@ end
 %for L=10:1:Lsum
 hist_cnt=300;
 hist=zeros(hist_cnt,16);
-car.v=vdst;
+car.v=0;%vdst;
 
 
 for i=1:hist_cnt
     %car.v = 30/3.6;%*(1.2+sin(i/10*car.dt*2*pi));
-    L=0.0+1.0*car.v;
+    L=5.0+1.0*car.v;
     [s,e,crop_path]=GetAheadOth(road,[car.x,car.y,car.th],L);
     shape = DrawCar( [car.x, car.y, -car.th], [car.L, car.W], 1.0  );
     k=sin(car.dlt)/car.L;
